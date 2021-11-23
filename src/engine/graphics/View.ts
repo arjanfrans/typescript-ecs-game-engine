@@ -1,4 +1,4 @@
-import {Mesh, Object3D} from "three";
+import { Mesh, Object3D } from "three";
 
 export abstract class View {
     public mesh?: Object3D = undefined;
@@ -19,10 +19,9 @@ export abstract class View {
         }
     }
 
-    public getMesh(): Object3D|Mesh
-    {
-        return this.mesh as Object3D|Mesh;
+    public getMesh(): Object3D | Mesh {
+        return this.mesh as Object3D | Mesh;
     }
 
-    public abstract update (interpolationPercentage: number);
+    public abstract update(interpolationPercentage: number);
 }

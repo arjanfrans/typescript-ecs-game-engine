@@ -8,7 +8,7 @@ import {
 import { ThreeScene } from "../engine/renderer/render-view/ThreeScene";
 import { Dimension } from "../engine/math/Dimension";
 import { PlayState } from "../state/PlayState";
-import {View} from "../engine/graphics/View";
+import { View } from "../engine/graphics/View";
 
 export class PlayScene extends ThreeScene {
     public camera?: PerspectiveCamera = undefined;
@@ -65,8 +65,12 @@ export class PlayScene extends ThreeScene {
         super.update(delta);
 
         if (this.cameraFollowView) {
-            this.getCamera().position.setX(this.cameraFollowView.getMesh().position.x);
-            this.getCamera().position.setY(this.cameraFollowView.getMesh().position.y);
+            this.getCamera().position.setX(
+                this.cameraFollowView.getMesh().position.x
+            );
+            this.getCamera().position.setY(
+                this.cameraFollowView.getMesh().position.y
+            );
         }
     }
 

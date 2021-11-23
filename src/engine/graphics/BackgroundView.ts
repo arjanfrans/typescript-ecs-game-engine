@@ -1,7 +1,7 @@
-import {Mesh, MeshBasicMaterial, PlaneGeometry} from 'three';
-import {TextureManager} from './TextureManager';
-import {TextureFrame} from './TextureFrame';
-import {View} from './View';
+import { Mesh, MeshBasicMaterial, PlaneGeometry } from "three";
+import { TextureManager } from "./TextureManager";
+import { TextureFrame } from "./TextureFrame";
+import { View } from "./View";
 
 class BackgroundView extends View {
     private _lightness: number;
@@ -11,7 +11,7 @@ class BackgroundView extends View {
     private _height: number;
     private material?: MeshBasicMaterial;
 
-    constructor (textureName: string, textureAtlasName: string) {
+    constructor(textureName: string, textureAtlasName: string) {
         super();
 
         this.textureName = textureName;
@@ -23,8 +23,11 @@ class BackgroundView extends View {
         this.init();
     }
 
-    private init () {
-        const textureAtlas = TextureManager.getAtlas(this.textureAtlasName, true);
+    private init() {
+        const textureAtlas = TextureManager.getAtlas(
+            this.textureAtlasName,
+            true
+        );
         const size = textureAtlas.getFrameSize(this.textureName);
 
         this._width = size.width;
@@ -36,7 +39,7 @@ class BackgroundView extends View {
 
         this.material = new MeshBasicMaterial({
             map: textureFrame.texture,
-            transparent: true
+            transparent: true,
         });
 
         const hsl = this.material.color.getHSL();
@@ -46,7 +49,7 @@ class BackgroundView extends View {
         this.mesh = new Mesh(geometry, this.material);
     }
 
-    set lightness (lightness) {
+    set lightness(lightness) {
         if (this.material) {
             const hsl = this.material.color.getHSL();
 
@@ -56,26 +59,25 @@ class BackgroundView extends View {
         }
     }
 
-    get lightness () {
+    get lightness() {
         return this._lightness;
     }
 
-    set width (width) {
+    set width(width) {
         if (this.mesh && this._width) {
             this.mesh.scale.x = width / this._width;
             this.mesh.position.x = width / 2;
         }
     }
 
-    set height (height) {
+    set height(height) {
         if (this.mesh && this._height) {
             this.mesh.scale.y = height / this._height;
             this.mesh.position.y = height / 2;
         }
     }
 
-    update(interpolationPercentage: number) {
-    }
+    update(interpolationPercentage: number) {}
 }
 
 export default BackgroundView;

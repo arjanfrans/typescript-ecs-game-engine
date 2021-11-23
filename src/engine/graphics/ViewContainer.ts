@@ -1,10 +1,10 @@
-import {Object3D} from 'three';
-import {View} from "./View";
+import { Object3D } from "three";
+import { View } from "./View";
 
 export class ViewContainer {
     private readonly staticViews: Set<View>;
-    private readonly dynamicViews: Set<View>
-    private _backgroundView?: View = undefined
+    private readonly dynamicViews: Set<View>;
+    private _backgroundView?: View = undefined;
     private _width: number;
     private _height: number;
     private mesh: Object3D = new Object3D();
@@ -47,7 +47,7 @@ export class ViewContainer {
 
             this._backgroundView = backgroundView;
         } else {
-            console.warn('backgroundView is the same');
+            console.warn("backgroundView is the same");
         }
     }
 
@@ -88,7 +88,7 @@ export class ViewContainer {
 
         this.mesh.scale.x = scale;
         this.mesh.updateMatrix();
-        this.mesh.updateMatrixWorld(true)
+        this.mesh.updateMatrixWorld(true);
     }
 
     set height(height) {
@@ -102,6 +102,6 @@ export class ViewContainer {
 
         this.mesh.scale.y = scale;
         this.mesh.updateMatrix();
-        this.mesh.updateMatrixWorld(true)
+        this.mesh.updateMatrixWorld(true);
     }
 }

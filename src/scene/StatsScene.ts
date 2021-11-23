@@ -1,6 +1,6 @@
-import {Camera, OrthographicCamera, PerspectiveCamera} from "three";
-import {ThreeScene} from "../engine/renderer/render-view/ThreeScene";
-import {Dimension} from "../engine/math/Dimension";
+import { Camera, OrthographicCamera, PerspectiveCamera } from "three";
+import { ThreeScene } from "../engine/renderer/render-view/ThreeScene";
+import { Dimension } from "../engine/math/Dimension";
 
 export class StatsScene extends ThreeScene {
     private camera?: OrthographicCamera = undefined;

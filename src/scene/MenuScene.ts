@@ -1,18 +1,16 @@
 import { Camera, OrthographicCamera, PerspectiveCamera } from "three";
-import { ThreeScene } from "../../../engine/renderer/render-view/ThreeScene";
-import { Dimension } from "../../../engine/math/Dimension";
-import { MenuState } from "../MenuState";
+import { ThreeScene } from "../engine/renderer/render-view/ThreeScene";
+import { MenuState } from "../state/MenuState";
+import { Dimension } from "../engine/math/Dimension";
 
-export class MenuRenderView extends ThreeScene {
+export class MenuScene extends ThreeScene {
     public camera?: OrthographicCamera = undefined;
     private state: MenuState;
-    private menu: any;
 
     constructor(state: MenuState) {
         super();
 
         this.state = state;
-        this.menu = state.menus;
     }
 
     init() {

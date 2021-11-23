@@ -1,9 +1,9 @@
 import { EntityManager } from "../EntityManager";
 import { Entity } from "../Entity";
 import { PlayerControllableComponent } from "../../components/PlayerControllableComponent";
-import {PositionComponent} from "../../components/PositionComponent";
-import {MovementComponent} from "../../components/MovementComponent";
-import {DimensionComponent} from "../../components/DimensionComponent";
+import { PositionComponent } from "../../components/PositionComponent";
+import { MovementComponent } from "../../components/MovementComponent";
+import { DimensionComponent } from "../../components/DimensionComponent";
 
 export class PlayerQuery {
     private constructor() {}
@@ -13,7 +13,7 @@ export class PlayerQuery {
             PlayerControllableComponent.TYPE,
             PositionComponent.TYPE,
             MovementComponent.TYPE,
-            DimensionComponent.TYPE
+            DimensionComponent.TYPE,
         ]);
 
         if (entities.length !== 1) {

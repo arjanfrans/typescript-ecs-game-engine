@@ -1,8 +1,8 @@
-import {TextureAtlas} from './TextureAtlas';
+import { TextureAtlas } from "./TextureAtlas";
 const _atlases = new Map();
 
 export class TextureManager {
-    static getAtlas (name, clone) {
+    static getAtlas(name, clone) {
         if (clone) {
             return new TextureAtlas(name, clone);
         }

@@ -1,12 +1,12 @@
-import {Entity} from "../entities/Entity";
-import {CollisionComponent} from "../components/CollisionComponent";
-import {Polygon} from "../../engine/math/Polygon";
-import {Vector2} from "three";
-import {DimensionComponent} from "../components/DimensionComponent";
-import {PositionComponent} from "../components/PositionComponent";
-import {MovementComponent} from "../components/MovementComponent";
-import {EntityManager} from "../entities/EntityManager";
-import {SystemInterface} from "./SystemInterface";
+import { Entity } from "../entities/Entity";
+import { CollisionComponent } from "../components/CollisionComponent";
+import { Polygon } from "../../engine/math/Polygon";
+import { Vector2 } from "three";
+import { DimensionComponent } from "../components/DimensionComponent";
+import { PositionComponent } from "../components/PositionComponent";
+import { MovementComponent } from "../components/MovementComponent";
+import { EntityManager } from "../entities/EntityManager";
+import { SystemInterface } from "./SystemInterface";
 
 export class CollisionSystem implements SystemInterface {
     public static REQUIRED_COMPONENTS = [

@@ -1,5 +1,10 @@
 import { Entity } from "./Entity";
 
+// * Entity is just an index
+// * Components owned by entity manager
+// * Index; rows are components; columns are entities (no spare array! no hash table! must be array of pointers)
+// * cpu likes array, not linked list
+
 export class EntityManager {
     public readonly entities: Set<Entity> = new Set();
     public readonly entityComponents: Map<string, Set<Entity>> = new Map<

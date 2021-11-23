@@ -37,9 +37,7 @@ export class TextView extends View {
             font: this.font.mapping,
             multipage: true,
         });
-    }
 
-    init() {
         const material = new MeshBasicMaterial({
             map: this.font.textures[0],
             transparent: true,
@@ -91,6 +89,5 @@ export class TextView extends View {
         }
     }
 
-    public update(interpolationPercentage: number) {
-    }
+    public update(interpolationPercentage: number) {}
 }

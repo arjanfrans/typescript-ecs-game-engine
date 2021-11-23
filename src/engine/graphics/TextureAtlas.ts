@@ -1,5 +1,5 @@
-import { RepeatWrapping, Vector2 } from 'three';
-import AssetManager from '../AssetManager';
+import { RepeatWrapping, Vector2 } from "three";
+import AssetManager from "../AssetManager";
 
 export class TextureAtlas {
     private readonly mapping: any;
@@ -8,7 +8,7 @@ export class TextureAtlas {
     public readonly height: number;
     private frames: Map<string, any>;
 
-    constructor (name: string, clone: boolean = false) {
+    constructor(name: string, clone: boolean = false) {
         this.mapping = AssetManager.getAtlasMapping(name);
 
         if (!this.mapping) {
@@ -34,10 +34,22 @@ export class TextureAtlas {
 
             // Origin image is y-inverted compared to what THREE wants
             const bounds = [
-                new Vector2(d.x / this.width, (this.height - (d.y)) / this.height), // lower left
-                new Vector2(d.x / this.width, (this.height - (d.y + d.h)) / this.height), // upper left
-                new Vector2((d.x + d.w) / this.width, (this.height - (d.y + d.h)) / this.height), // upper right
-                new Vector2((d.x + d.w) / this.width, (this.height - (d.y)) / this.height) // lower right
+                new Vector2(
+                    d.x / this.width,
+                    (this.height - d.y) / this.height
+                ), // lower left
+                new Vector2(
+                    d.x / this.width,
+                    (this.height - (d.y + d.h)) / this.height
+                ), // upper left
+                new Vector2(
+                    (d.x + d.w) / this.width,
+                    (this.height - (d.y + d.h)) / this.height
+                ), // upper right
+                new Vector2(
+                    (d.x + d.w) / this.width,
+                    (this.height - d.y) / this.height
+                ), // lower right
             ];
 
             this.frames.set(frame.filename, {
@@ -45,27 +57,27 @@ export class TextureAtlas {
                 frame: frame,
                 framePosition: {
                     x: d.x,
-                    y: d.y
+                    y: d.y,
                 },
                 frameSize: {
                     width: d.w,
-                    height: d.h
-                }
+                    height: d.h,
+                },
             });
         }
     }
 
-    getFrameOffset (name) {
-        const d = this.frames.get(name + '.png').framePosition;
+    getFrameOffset(name) {
+        const d = this.frames.get(name + ".png").framePosition;
 
         return new Vector2(d.x / this.width, (this.height - d.y) / this.height);
     }
 
-    getFrameSize (name) {
-        return this.frames.get(name + '.png').frameSize;
+    getFrameSize(name) {
+        return this.frames.get(name + ".png").frameSize;
     }
 
-    getBounds (name) {
-        return this.frames.get(name + '.png').bounds;
+    getBounds(name) {
+        return this.frames.get(name + ".png").bounds;
     }
 }

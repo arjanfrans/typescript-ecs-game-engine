@@ -1,21 +1,35 @@
-class Menu {
-    constructor () {
-        this.menuItems = new Map();
+import { MenuItem } from "./MenuItem";
+
+export class Menu {
+    public readonly menuItems: Map<string, MenuItem> = new Map();
+    private readonly menuItemKeys: any[];
+    private selectedItemIndex: number;
+    private freeze: boolean;
+
+    constructor() {
         this.menuItemKeys = [];
         this.selectedItemIndex = 0;
         this.freeze = false;
     }
 
-    addMenuItem (menuItem) {
+    addMenuItem(menuItem: MenuItem) {
         this.menuItemKeys.push(menuItem.name);
         this.menuItems.set(menuItem.name, menuItem);
     }
 
-    get selectedItem () {
-        return this.menuItems.get(this.menuItemKeys[this.selectedItemIndex]);
+    get selectedItem(): MenuItem {
+        const menuItem = this.menuItems.get(
+            this.menuItemKeys[this.selectedItemIndex]
+        );
+
+        if (!menuItem) {
+            throw new Error("Menu item not found");
+        }
+
+        return menuItem;
     }
 
-    moveUp () {
+    moveUp() {
         if (!this.freeze) {
             if (this.selectedItemIndex > 0) {
                 this.selectedItemIndex -= 1;
@@ -25,7 +39,7 @@ class Menu {
         }
     }
 
-    moveDown () {
+    moveDown() {
         if (!this.freeze) {
             if (this.selectedItemIndex < this.menuItemKeys.length - 1) {
                 this.selectedItemIndex += 1;
@@ -35,7 +49,7 @@ class Menu {
         }
     }
 
-    selectCurrentItem () {
+    selectCurrentItem() {
         this.selectedItem.action();
     }
 }
