@@ -1,4 +1,4 @@
-import { Geometry, Vector2 } from "three";
+import { Geometry, Texture, Vector2 } from "three";
 import { TextureAtlas } from "./TextureAtlas";
 
 export class TextureFrame {
@@ -14,7 +14,7 @@ export class TextureFrame {
         this.fixed = fixed;
     }
 
-    get texture() {
+    get texture(): Texture {
         return this.textureAtlas.texture;
     }
 

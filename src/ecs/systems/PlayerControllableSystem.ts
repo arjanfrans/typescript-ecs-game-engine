@@ -1,6 +1,6 @@
 import { MovementComponent } from "../components/MovementComponent";
 import { PlayerControllableComponent } from "../components/PlayerControllableComponent";
-import { Keys, LetterKeys } from "../../engine/input/Keys";
+import { Keys } from "../../engine/input/Keys";
 import { Keyboard } from "../../engine/input/Keyboard";
 import Gamepad from "../../engine/input/Gamepad";
 import { InputSourceInterface } from "../../engine/input/InputSourceInterface";

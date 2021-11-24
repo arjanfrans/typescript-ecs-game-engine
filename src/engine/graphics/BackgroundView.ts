@@ -37,6 +37,8 @@ class BackgroundView extends View {
 
         const textureFrame = new TextureFrame(textureAtlas, geometry);
 
+        textureFrame.frame = this.textureName;
+
         this.material = new MeshBasicMaterial({
             map: textureFrame.texture,
             transparent: true,

@@ -4,7 +4,6 @@ import { FileLoader, TextureLoader } from 'three';
 const _assets = {
     atlases: new Map(),
     textures: new Map(),
-    maps: new Map(),
     fonts: new Map(),
     audio: new Map()
 };
@@ -119,12 +118,6 @@ const _loadAtlas = function (atlasesPath, name) {
     });
 };
 
-const _loadMap = function (mapsPath, name) {
-    return _loadJson(mapsPath + name + '.json').then(function (atlas) {
-        _assets.maps.set(name, atlas);
-    });
-};
-
 let _textureLoader = null;
 let fileLoader = null;
 
@@ -138,10 +131,6 @@ const AssetLoader = {
 
         for (const atlasName of assetConfig.textureAtlases) {
             assetsToLoad.push(_loadAtlas(paths.atlases + '/', atlasName));
-        }
-
-        for (const mapName of assetConfig.maps) {
-            assetsToLoad.push(_loadMap(paths.maps + '/', mapName));
         }
 
         for (const fontName of assetConfig.fonts) {
@@ -172,16 +161,6 @@ const AssetLoader = {
         clone.needsUpdate = true;
 
         return clone;
-    },
-
-    getMap (name) {
-        const map = _assets.maps.get(name);
-
-        if (!map) {
-            throw new Error('Map does not exist: ' + name);
-        }
-
-        return map;
     },
 
     getAtlasMapping (name) {

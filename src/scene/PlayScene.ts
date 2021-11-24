@@ -12,14 +12,11 @@ import { View } from "../engine/graphics/View";
 
 export class PlayScene extends ThreeScene {
     public camera?: PerspectiveCamera = undefined;
-    private map: any;
     private _cameraFollowView?: any;
     private _cameraFollowLight?: SpotLight;
 
     constructor(state: PlayState) {
         super();
-
-        this.map = state.map;
     }
 
     get cameraFollowView(): View {
@@ -43,18 +40,9 @@ export class PlayScene extends ThreeScene {
     init() {
         super.init();
 
-        this.camera = new PerspectiveCamera(
-            75,
-            this.map.width / this.map.height,
-            100,
-            1000
-        );
+        this.camera = new PerspectiveCamera(75, 4 / 3, 100, 1000);
 
-        this.getCamera().position.x =
-            (this.map.width / 2) * this.map.blockWidth;
-        this.getCamera().position.y =
-            (this.map.height / 2) * this.map.blockHeight;
-        this.getCamera().position.z = this.map.blockDepth * 6;
+        this.getCamera().position.z = 100 * 3;
 
         const ambientLight = new AmbientLight(0xffffff);
 

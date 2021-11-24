@@ -10,6 +10,7 @@ export class KeyboardInputSource implements InputSourceInterface {
         global.addEventListener(
             "keyup",
             (event) => {
+                event.preventDefault();
                 this.keyboard.onKeyup(event);
             },
             false
@@ -18,6 +19,7 @@ export class KeyboardInputSource implements InputSourceInterface {
         global.addEventListener(
             "keydown",
             (event) => {
+                event.preventDefault();
                 this.keyboard.onKeydown(event);
             },
             false

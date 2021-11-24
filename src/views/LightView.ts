@@ -63,8 +63,9 @@ export class LightView extends View {
             );
             spotLight.angle = Math.PI / 4;
             spotLight.penumbra = 0.1;
+            spotLight.intensity = 2;
             spotLight.decay = 2;
-            spotLight.distance = 200;
+            spotLight.distance = 600;
 
             spotLight.castShadow = false;
             spotLight.shadow.mapSize.width = 512;

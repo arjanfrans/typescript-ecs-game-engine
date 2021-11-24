@@ -1,7 +1,7 @@
-import Menu from "../engine/menu-system/Menu";
-import { MenuItem } from "../engine/menu-system/MenuItem";
-import { Engine } from "../engine/Engine";
-import { MenuState } from "../state/MenuState";
+import Menu from "../../engine/menu-system/Menu";
+import { MenuItem } from "../../engine/menu-system/MenuItem";
+import { Engine } from "../../engine/Engine";
+import { MenuState } from "../../state/MenuState";
 
 export class MenuStateBuilder {
     constructor(private readonly engine: Engine) {}

@@ -44,6 +44,8 @@ export abstract class ThreeScene implements SceneInterface {
                 viewContainer.visible = false;
             }
         }
+
+        this._initialized = true;
     }
 
     get scene(): Scene {
