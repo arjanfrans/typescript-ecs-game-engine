@@ -44,7 +44,7 @@ const ASSET_CONFIG = {
 
     engine.addState("menu", menuState);
     engine.addState("play", playState);
-    engine.changeState("menu");
+    engine.changeState("play");
 
     engine.run();
 })();

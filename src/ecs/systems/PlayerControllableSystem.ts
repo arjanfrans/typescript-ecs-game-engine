@@ -10,6 +10,7 @@ import { SystemInterface } from "./SystemInterface";
 import { EntityManager } from "../entities/EntityManager";
 import { Entity } from "../entities/Entity";
 import { PlayState } from "../../state/PlayState";
+import { PositionComponent } from "../components/PositionComponent";
 
 export class PlayerControllableSystem implements SystemInterface {
     private keyboard: Keyboard;

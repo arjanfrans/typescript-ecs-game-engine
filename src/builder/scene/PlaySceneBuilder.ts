@@ -2,9 +2,9 @@ import { Engine } from "../../engine/Engine";
 import { ViewContainer } from "../../engine/graphics/ViewContainer";
 import { PlayState } from "../../state/PlayState";
 import { PlayScene } from "../../scene/PlayScene";
-import { PlayerView } from "../../views/PlayerView";
 import { LightView } from "../../views/LightView";
 import { FloorView } from "../../views/FloorView";
+import { CubeView } from "../../views/CubeView";
 
 export class PlaySceneBuilder {
     constructor(
@@ -14,7 +14,7 @@ export class PlaySceneBuilder {
 
     public build(): PlayScene {
         const playScene = new PlayScene(this.playState);
-        const playerView = new PlayerView(this.playState);
+        const playerView = new CubeView(this.playState);
         const lightView = new LightView(this.playState);
         const floorView = new FloorView(this.playState);
 

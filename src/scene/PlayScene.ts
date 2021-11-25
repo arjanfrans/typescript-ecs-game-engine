@@ -1,6 +1,7 @@
 import {
     AmbientLight,
     Camera,
+    OrbitControls,
     OrthographicCamera,
     PerspectiveCamera,
     SpotLight,
@@ -9,14 +10,20 @@ import { ThreeScene } from "../engine/renderer/render-view/ThreeScene";
 import { Dimension } from "../engine/math/Dimension";
 import { PlayState } from "../state/PlayState";
 import { View } from "../engine/graphics/View";
+import { ThirdPersonCamera } from "../engine/camera/ThirdPersonCamera";
 
 export class PlayScene extends ThreeScene {
     public camera?: PerspectiveCamera = undefined;
     private _cameraFollowView?: any;
     private _cameraFollowLight?: SpotLight;
+    private thirdPersonCamera?: ThirdPersonCamera;
 
     constructor(state: PlayState) {
         super();
+
+        this.camera = new PerspectiveCamera(75, 4 / 3, 100, 1000);
+        this.camera.position.z = 100 * 4;
+        // this.camera.rotateY(90 * (Math.PI / 180))
     }
 
     get cameraFollowView(): View {
@@ -25,6 +32,11 @@ export class PlayScene extends ThreeScene {
 
     set cameraFollowView(view: View) {
         this._cameraFollowView = view;
+
+        this.thirdPersonCamera = new ThirdPersonCamera(
+            this.getCamera(),
+            view.getMesh()
+        );
     }
 
     get cameraFollowLight(): SpotLight {
@@ -40,11 +52,7 @@ export class PlayScene extends ThreeScene {
     init() {
         super.init();
 
-        this.camera = new PerspectiveCamera(75, 4 / 3, 100, 1000);
-
-        this.getCamera().position.z = 100 * 3;
-
-        const ambientLight = new AmbientLight(0xffffff);
+        const ambientLight = new AmbientLight(0xafffff);
 
         this.scene.add(ambientLight);
     }
@@ -53,16 +61,26 @@ export class PlayScene extends ThreeScene {
         super.update(delta);
 
         if (this.cameraFollowView) {
-            this.getCamera().position.setX(
-                this.cameraFollowView.getMesh().position.x
-            );
-            this.getCamera().position.setY(
-                this.cameraFollowView.getMesh().position.y
-            );
+            if (this.thirdPersonCamera) {
+                this.thirdPersonCamera.update(delta);
+            } else {
+                this.getCamera().position.setX(
+                    this.cameraFollowView.getMesh().position.x
+                );
+                this.getCamera().position.setY(
+                    this.cameraFollowView.getMesh().position.y
+                );
+            }
         }
     }
 
-    getCamera(): Camera | OrthographicCamera | PerspectiveCamera {
-        return this.camera as PerspectiveCamera;
+    getCamera(): Camera {
+        const camera = this.camera;
+
+        if (!camera) {
+            throw new Error("no camera");
+        }
+
+        return camera;
     }
 }

@@ -28,11 +28,15 @@ export class MovementSystem implements SystemInterface {
                 PositionComponent.TYPE
             );
 
-            movement.angle += movement.angularVelocity * delta;
-
-            if (movement.angle < 0) {
-                movement.angle = Math.PI * 2 - movement.angle;
-            }
+            // console.log(movement.angle, movement.angularVelocity)
+            // movement.angle += movement.angularVelocity * delta;
+            // // console.log(movement.angularVelocity)
+            // if (movement.angularVelocity > 0) {
+            movement.angle -= movement.angularVelocity * delta;
+            // } else {
+            //     movement.angle -= movement.angularVelocity * delta;
+            //     console.log(movement.angle * (180 / Math.PI))
+            // }
 
             position.previousPosition.x = position.position.x;
             position.previousPosition.y = position.position.y;

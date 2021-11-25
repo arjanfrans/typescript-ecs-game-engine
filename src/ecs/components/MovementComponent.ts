@@ -26,7 +26,7 @@ export class MovementComponent implements ComponentInterface {
         reverse: boolean = false,
         speed: number = DEFAULT_SPEED,
         rotationSpeed: number = DEFAULT_ROTATION_SPEED,
-        angle: number = Math.PI * 2
+        angle: number = 0
     ) {
         this.speed = speed;
         this.velocity = new Vector3(velocityX, velocityY, velocityZ);
@@ -43,23 +43,23 @@ export class MovementComponent implements ComponentInterface {
     moveUp() {
         this.reverse = false;
         this.isMoving = true;
-        this.velocity.x = -this.speed * Math.cos(this.angle);
-        this.velocity.y = -this.speed * Math.sin(this.angle);
+        this.velocity.x = -this.speed * Math.sin(this.angle);
+        this.velocity.y = this.speed * Math.cos(this.angle);
     }
 
     moveDown() {
         this.reverse = true;
         this.isMoving = true;
-        this.velocity.x = this.speed * Math.cos(this.angle);
-        this.velocity.y = this.speed * Math.sin(this.angle);
+        this.velocity.x = this.speed * Math.sin(this.angle);
+        this.velocity.y = -this.speed * Math.cos(this.angle);
     }
 
     turnLeft() {
-        this.angularVelocity = this.rotationSpeed * (Math.PI / 180);
+        this.angularVelocity = -this.rotationSpeed * (Math.PI / 180);
     }
 
     turnRight() {
-        this.angularVelocity = -this.rotationSpeed * (Math.PI / 180);
+        this.angularVelocity = this.rotationSpeed * (Math.PI / 180);
     }
 
     stopMoving() {
